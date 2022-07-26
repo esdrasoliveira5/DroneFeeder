@@ -3,6 +3,9 @@ package group.one.dronefeeder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * DroneFeederApplication.
+ */
 @SpringBootApplication
 public class DroneFeederApplication {
 
