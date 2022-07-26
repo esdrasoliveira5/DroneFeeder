@@ -2,7 +2,12 @@ server:
     port: 8080
 
 spring:
-    datasource:
-        password: minhasseries
-        url: jdbc:h2:mem:minhas_series_database
-        username: minhasseries
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/
+    username: root
+    password: root
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
