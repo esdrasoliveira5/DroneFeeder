@@ -1,0 +1,8 @@
+group\one\dronefeeder\model\Delivery.class
+group\one\dronefeeder\exception\exception.class
+group\one\dronefeeder\model\Video.class
+group\one\dronefeeder\repository\repository.class
+group\one\dronefeeder\service\service.class
+group\one\dronefeeder\DroneFeederApplication.class
+group\one\dronefeeder\controller\controller.class
+group\one\dronefeeder\model\Drone.class
