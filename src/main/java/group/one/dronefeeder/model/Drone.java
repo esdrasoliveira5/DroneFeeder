@@ -25,4 +25,36 @@ public class Drone {
   @Column
   @OneToMany(mappedBy = "drone", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Delivery> deliveries;
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public String getBrand() {
+    return brand;
+  }
+
+  public void setBrand(String brand) {
+    this.brand = brand;
+  }
+
+  public String getModel() {
+    return model;
+  }
+
+  public void setModel(String model) {
+    this.model = model;
+  }
+
+  public List<Delivery> getDeliveries() {
+    return deliveries;
+  }
+
+  public void setDeliveries(List<Delivery> deliveries) {
+    this.deliveries = deliveries;
+  }
 }
