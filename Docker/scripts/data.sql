@@ -1,0 +1,4 @@
+USE MY_DBASE;
+
+INSERT INTO DRONE (id_drone, marca, modelo) VALUES (1, 'Mirage', 'Drone Mirage');
+INSERT INTO DRONE (id_drone, marca, modelo) VALUES (2, 'Multilaser', 'Drone Fun');
