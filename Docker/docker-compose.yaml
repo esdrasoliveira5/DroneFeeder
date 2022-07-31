@@ -1,0 +1,33 @@
+version : '3'
+services :
+  springapp :
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports :
+      - "8082:8082"
+    depends_on:
+      - dbapp
+  dbapp :
+    image : mysql:latest
+    restart : always
+    command: --lower_case_table_names=1
+    environment :
+      MYSQL_DATABASE : 'MY_DBASE'
+      MYSQL_ROOT_PASSWORD : 'secret'
+    expose:
+      - "3306"
+    ports :
+      - "3306:3306"
+    volumes:
+      - "./scripts/schema.sql:/docker-entrypoint-initdb.d/1.sql"
+      - "./scripts/data.sql:/docker-entrypoint-initdb.d/2.sql"
+  adminer:
+    image: adminer:latest
+    restart: unless-stopped
+    ports:
+      - 8000:8080
+    depends_on:
+      - dbapp
+    environment:
+      ADMINER_DEFAULT_SERVER: dbapp
