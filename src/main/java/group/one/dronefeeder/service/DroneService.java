@@ -13,20 +13,17 @@ import java.util.List;
 @Service
 public class DroneService {
   @Autowired
-  private DroneRepository repository;
+  DroneRepository droneJpaRepository;
 
   /**
    * Create.
    */
   public Drone create(Drone drone) {
-    if (repository.existsByNome(drone.getModel())) {
-      throw new DroneExistenteException();
-    }
-    return repository.save(drone);
+    return droneJpaRepository.save(drone);
   }
 
   public List<Drone> findAll() {
-    return repository.findAll();
+    return droneJpaRepository.findAll();
   }
 
 }
