@@ -1,5 +1,6 @@
 package group.one.dronefeeder.service;
 
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,26 @@ public class DeliveryService {
     }
 
     return repository.save(delivery);
+  }
+
+
+  public Delivery update(Long id, Delivery delivery) {
+    Delivery oldDelivery =
+        repository.findById(id).orElseThrow(() -> new DeliveryNotFoundException());
+    oldDelivery.setDrone(delivery.getDrone());
+    oldDelivery.setLatitude(delivery.getLatitude());
+    oldDelivery.setLongitude(delivery.getLongitude());
+    repository.save(delivery);
+    return delivery;
+  }
+
+  public Delivery patch(Long id) {
+    Delivery delivery = repository.findById(id).orElseThrow(() -> new DeliveryNotFoundException());
+    Date date = new Date();
+    delivery.setDeliveryStatus(true);
+    delivery.setDeliveryDateAndTime(date);
+    repository.save(delivery);
+    return delivery;
   }
 
   public void delete(Long id) {

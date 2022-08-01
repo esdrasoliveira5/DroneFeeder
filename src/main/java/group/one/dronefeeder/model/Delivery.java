@@ -42,7 +42,7 @@ public class Delivery {
   public Delivery(String latitude, String longitude, Date dateAndTime, Drone drone) {
     this.latitude = latitude;
     this.longitude = longitude;
-    this.dateAndTime = dateAndTime;
+    this.dateAndTime = new Date();
     this.drone = drone;
     this.deliveryStatus = false;
     this.deliveryDateAndTime = null;
