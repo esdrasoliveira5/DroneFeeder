@@ -4,6 +4,7 @@ services :
     build:
       context: ./
       dockerfile: Dockerfile
+    restart : always
     ports :
       - "8082:8082"
     depends_on:
@@ -11,12 +12,9 @@ services :
   dbapp :
     image : mysql:latest
     restart : always
-    command: --lower_case_table_names=1
     environment :
-      MYSQL_DATABASE : 'MY_DBASE'
-      MYSQL_ROOT_PASSWORD : 'secret'
-    expose:
-      - "3306"
+      MYSQL_ROOT_PASSWORD: "secretroot"
+      MYSQL_DATABASE: "MY_DBASE"
     ports :
       - "3306:3306"
     volumes:
@@ -29,5 +27,3 @@ services :
       - 8000:8080
     depends_on:
       - dbapp
-    environment:
-      ADMINER_DEFAULT_SERVER: dbapp
