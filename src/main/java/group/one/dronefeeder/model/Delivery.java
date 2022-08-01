@@ -26,6 +26,12 @@ public class Delivery {
   @Column
   private Date dateAndTime;
 
+  @Column
+  private boolean deliveryStatus;
+
+  @Column
+  private Date deliveryDateAndTime;
+
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "drone_id")
@@ -38,6 +44,8 @@ public class Delivery {
     this.longitude = longitude;
     this.dateAndTime = dateAndTime;
     this.drone = drone;
+    this.deliveryStatus = false;
+    this.deliveryDateAndTime = null;
   }
 
   public Long getId() {
@@ -78,6 +86,22 @@ public class Delivery {
 
   public void setDrone(Drone drone) {
     this.drone = drone;
+  }
+
+  public boolean getDeliveryStatus() {
+    return deliveryStatus;
+  }
+
+  public void setDeliveryStatus(boolean deliveryStatus) {
+    this.deliveryStatus = deliveryStatus;
+  }
+
+  public Date getDeliveryDateAndTime() {
+    return deliveryDateAndTime;
+  }
+
+  public void setDeliveryDateAndTime(Date deliveryDateAndTime) {
+    this.deliveryDateAndTime = deliveryDateAndTime;
   }
 
 }
