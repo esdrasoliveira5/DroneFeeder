@@ -1,39 +1,40 @@
 package group.one.dronefeeder.controller;
 
+import group.one.dronefeeder.exception.DroneExistenteException;
+import group.one.dronefeeder.repository.DroneRepository;
 import group.one.dronefeeder.service.DroneService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import group.one.dronefeeder.model.Drone;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import java.util.Optional;
 
 /**
  * DroneController.
  */
 @RestController
+@RequestMapping("/dronefeeder")
 public class DroneController {
   @Autowired
-  private DroneService service;
+  private DroneService droneService;
 
-  @GetMapping("/")
-  public String testApplication() {
-    return "Teste";
+  @GetMapping("/drone")
+  public List<Drone> findAll() {
+    return droneService.findAll();
   }
 
-  @PostMapping("/droneteste")
-  public Drone testDrone(@RequestBody Drone drone) {
-    return drone;
+  @GetMapping("/drone/{id}")
+  public Optional<Drone> findById(@PathVariable Integer id) {
+    return droneService.findDroneById(id);
   }
 
   @PostMapping("/drone")
   public Drone create(@RequestBody Drone drone) {
-    return service.create(drone);
+    return droneService.create(drone);
   }
 
-  @GetMapping("/drone")
-  public List<Drone> all() {
-    return service.findAll();
+  @DeleteMapping("/drone/{id}")
+  public Drone testDrone(@PathVariable Integer id, @RequestBody Drone drone) {
+    return drone;
   }
 }
