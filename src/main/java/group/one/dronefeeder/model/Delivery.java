@@ -31,4 +31,53 @@ public class Delivery {
   @JoinColumn(name = "drone_id")
   private Drone drone;
 
+  public Delivery() {}
+
+  public Delivery(String latitude, String longitude, Date dateAndTime, Drone drone) {
+    this.latitude = latitude;
+    this.longitude = longitude;
+    this.dateAndTime = dateAndTime;
+    this.drone = drone;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public String getLatitude() {
+    return latitude;
+  }
+
+  public void setLatitude(String latitude) {
+    this.latitude = latitude;
+  }
+
+  public String getLongitude() {
+    return longitude;
+  }
+
+  public void setLongitude(String longitude) {
+    this.longitude = longitude;
+  }
+
+  public Date getDateAndTime() {
+    return dateAndTime;
+  }
+
+  public void setDateAndTime(Date dateAndTime) {
+    this.dateAndTime = dateAndTime;
+  }
+
+  public Drone getDrone() {
+    return drone;
+  }
+
+  public void setDrone(Drone drone) {
+    this.drone = drone;
+  }
+
 }
