@@ -39,7 +39,7 @@ public class Delivery {
 
   public Delivery() {}
 
-  public Delivery(String latitude, String longitude, Date dateAndTime, Drone drone) {
+  public Delivery(String latitude, String longitude, Drone drone) {
     this.latitude = latitude;
     this.longitude = longitude;
     this.dateAndTime = new Date();
