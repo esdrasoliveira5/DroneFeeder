@@ -26,10 +26,9 @@ public class DeliveryService {
   }
 
   public Delivery create(Delivery delivery) {
-    if (repository.existsByDateAndTime(delivery.getDateAndTime())) {
-      throw new DeliveryExistenceException();
-    }
-
+    // if (repository.existsByDateAndTime(delivery.getDateAndTime())) {
+    //   throw new DeliveryExistenceException();
+    // }
     return repository.save(delivery);
   }
 

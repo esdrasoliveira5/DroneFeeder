@@ -27,7 +27,7 @@ public class DeliveryController {
     return service.findAll();
   }
 
-  @GetMapping("/delivery/{id)")
+  @GetMapping("/delivery/{id}")
   public Delivery getOne(@PathVariable Long id) {
     return service.findOne(id);
   }
