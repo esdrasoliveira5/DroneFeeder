@@ -24,18 +24,18 @@ import group.one.dronefeeder.model.Drone;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @RunWith(SpringRunner.class)
 class DroneFeederApplicationTests {
-  @Autowired
-  private MockMvc mockMvc;
+  // @Autowired
+  // private MockMvc mockMvc;
 
-  @Test
-  @Order(1)
-  @DisplayName("1 - Deve adicionar um drone")
-  void deveAdicionarDrone() throws Exception {
-    final var drone = new Drone("leo12", "mar12");
-    mockMvc
-        .perform(post("/dronefeeder/drone").contentType(MediaType.APPLICATION_JSON)
-            .content(new ObjectMapper().writeValueAsString(drone)))
-        .andExpect(content().contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
-        .andExpect(jsonPath("$.marca").value(drone.getMarca()));
-  }
+  // @Test
+  // @Order(1)
+  // @DisplayName("1 - Deve adicionar um drone")
+  // void deveAdicionarDrone() throws Exception {
+  //   final var drone = new Drone("leo12", "mar12");
+  //   mockMvc
+  //       .perform(post("/dronefeeder/drone").contentType(MediaType.APPLICATION_JSON)
+  //           .content(new ObjectMapper().writeValueAsString(drone)))
+  //       .andExpect(content().contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+  //       .andExpect(jsonPath("$.marca").value(drone.getMarca()));
+  // }
 }
