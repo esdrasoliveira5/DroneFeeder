@@ -1,14 +1,14 @@
 version : '3'
 services :
-  # springapp :
-  #   build:
-  #     context: ./
-  #     dockerfile: Dockerfile
-  #   restart : always
-  #   ports :
-  #     - "8082:8082"
-  #   depends_on:
-  #     - dbapp
+  springapp :
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart : always
+    ports :
+      - "8082:8082"
+    depends_on:
+      - dbapp
   dbapp :
     image : mysql:latest
     restart : always
@@ -20,10 +20,10 @@ services :
     volumes:
       - "./scripts/schema.sql:/docker-entrypoint-initdb.d/1.sql"
       - "./scripts/data.sql:/docker-entrypoint-initdb.d/2.sql"
-  # adminer:
-  #   image: adminer:latest
-  #   restart: unless-stopped
-  #   ports:
-  #     - 8000:8080
-  #   depends_on:
-  #     - dbapp
+  adminer:
+    image: adminer:latest
+    restart: unless-stopped
+    ports:
+      - 8000:8080
+    depends_on:
+      - dbapp
