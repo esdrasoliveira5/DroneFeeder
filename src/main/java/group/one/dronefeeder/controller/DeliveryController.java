@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import group.one.dronefeeder.model.Delivery;
 import group.one.dronefeeder.service.DeliveryService;
 
@@ -17,6 +19,7 @@ import group.one.dronefeeder.service.DeliveryService;
  * Delivery Controller.
  */
 @RestController
+@RequestMapping("/dronefeeder")
 public class DeliveryController {
 
   @Autowired

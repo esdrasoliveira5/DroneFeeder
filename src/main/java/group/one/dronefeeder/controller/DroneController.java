@@ -24,7 +24,7 @@ public class DroneController {
   }
 
   @GetMapping("/drone/{id}")
-  public Optional<Drone> findById(@PathVariable Integer id) {
+  public Optional<Drone> findById(@PathVariable Long id) {
     return droneService.findDroneById(id);
   }
 

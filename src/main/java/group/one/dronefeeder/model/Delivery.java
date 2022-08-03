@@ -9,8 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "delivery")
 public class Delivery {
 
   @Id
@@ -27,25 +30,26 @@ public class Delivery {
   private Date dateAndTime;
 
   @Column
-  private boolean deliveryStatus;
+  private boolean deliveryStatus = false;
 
   @Column
-  private Date deliveryDateAndTime;
+  private Date deliveryDateAndTime = null;
 
-
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne
   @JoinColumn(name = "drone_id")
   private Drone drone;
+
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "video_id")
+  private Video video;
 
   public Delivery() {}
 
   public Delivery(String latitude, String longitude, Drone drone) {
     this.latitude = latitude;
     this.longitude = longitude;
-    this.dateAndTime = new Date();
     this.drone = drone;
-    this.deliveryStatus = false;
-    this.deliveryDateAndTime = null;
+    this.dateAndTime = new Date();
   }
 
   public Long getId() {
@@ -57,7 +61,7 @@ public class Delivery {
   }
 
   public String getLatitude() {
-    return latitude;
+    return this.latitude;
   }
 
   public void setLatitude(String latitude) {
