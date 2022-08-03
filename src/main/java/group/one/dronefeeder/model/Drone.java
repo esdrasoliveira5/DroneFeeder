@@ -25,6 +25,9 @@ public class Drone {
   @OneToMany(mappedBy = "drone", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Delivery> deliveries;
 
+  @OneToMany(mappedBy = "drone", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<Video> videos;
+
   public Drone() {}
 
   public Drone(String marca, String modelo) {
