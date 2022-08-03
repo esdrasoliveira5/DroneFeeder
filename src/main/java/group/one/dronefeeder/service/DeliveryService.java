@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import group.one.dronefeeder.exception.DeliveryNotFoundException;
+import group.one.dronefeeder.exception.NotFoundException;
 import group.one.dronefeeder.model.Delivery;
 import group.one.dronefeeder.repository.DeliveryRepository;
 
@@ -21,12 +21,12 @@ public class DeliveryService {
   }
 
   public Delivery findOne(Long id) {
-    return repository.findById(id).orElseThrow(() -> new DeliveryNotFoundException());
+    return repository.findById(id).orElseThrow(() -> new NotFoundException("Delivery Not Found!"));
   }
 
   public Delivery create(Delivery delivery) {
-    // if (repository.existsByDateAndTime(delivery.getDateAndTime())) {
-    // throw new DeliveryExistenceException();
+    // if (repository.existsByDateAndTime(delivery.getDrone(), delivery.getDateAndTime())) {
+    // throw new ExistenteException("Delivery ALready Exist!");
     // }
 
     return repository.save(delivery);
@@ -35,7 +35,7 @@ public class DeliveryService {
 
   public Delivery update(Long id, Delivery delivery) {
     Delivery oldDelivery =
-        repository.findById(id).orElseThrow(() -> new DeliveryNotFoundException());
+        repository.findById(id).orElseThrow(() -> new NotFoundException("Delivery Not Found!"));
     oldDelivery.setDrone(delivery.getDrone());
     oldDelivery.setLatitude(delivery.getLatitude());
     oldDelivery.setLongitude(delivery.getLongitude());
@@ -44,7 +44,8 @@ public class DeliveryService {
   }
 
   public Delivery patch(Long id) {
-    Delivery delivery = repository.findById(id).orElseThrow(() -> new DeliveryNotFoundException());
+    Delivery delivery =
+        repository.findById(id).orElseThrow(() -> new NotFoundException("Delivery Not Found!"));
     Date date = new Date();
     delivery.setDeliveryStatus(true);
     delivery.setDeliveryDateAndTime(date);
@@ -54,7 +55,8 @@ public class DeliveryService {
 
   public void delete(Long id) {
 
-    Delivery delivery = repository.findById(id).orElseThrow(() -> new DeliveryNotFoundException());
+    Delivery delivery =
+        repository.findById(id).orElseThrow(() -> new NotFoundException("Delivery Not Found!"));
 
     repository.deleteById(delivery.getId());
   }
