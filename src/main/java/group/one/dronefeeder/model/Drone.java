@@ -1,5 +1,6 @@
 package group.one.dronefeeder.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,11 +18,9 @@ public class Drone {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
-
-  @Column
+  @Column(nullable = false)
   private String marca;
-
-  @Column
+  @Column(nullable = false)
   private String modelo;
 
   @OneToMany(mappedBy = "drone", cascade = CascadeType.ALL, orphanRemoval = true)
