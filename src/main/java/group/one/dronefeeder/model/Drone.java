@@ -13,12 +13,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "drone")
 public class Drone {
+  
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "id_drone")
   private Long id;
+
   @Column
   private String marca;
+
   @Column
   private String modelo;
 
