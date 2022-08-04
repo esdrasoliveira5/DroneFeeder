@@ -2,6 +2,7 @@ package group.one.dronefeeder.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,7 @@ import group.one.dronefeeder.dto.VideoCreateDto;
 import group.one.dronefeeder.model.Video;
 import group.one.dronefeeder.service.VideoService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/dronefeeder")
 public class VideoController {
