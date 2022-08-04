@@ -91,6 +91,17 @@ O drone ainda vai informar se a entrega foi efetuada junto a data, horário e v�
 
 <br/>
 
+## Instruções para acessar a API pelo deploy
+
+<br>
+
+- Acesse pelo endpoint
+  ```sh
+  https://dronefeederacc.herokuapp.com
+   
+<br/>
+
+
 ## Instruções para testar o projeto
 
 <br>
