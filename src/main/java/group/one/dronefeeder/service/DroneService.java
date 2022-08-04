@@ -1,19 +1,13 @@
 package group.one.dronefeeder.service;
 
-import group.one.dronefeeder.exception.DeliveryNotFoundException;
-import group.one.dronefeeder.exception.DroneExistenteException;
-import group.one.dronefeeder.exception.NotFoundException;
-import group.one.dronefeeder.model.Delivery;
-import group.one.dronefeeder.model.Drone;
-import group.one.dronefeeder.repository.DroneRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import group.one.dronefeeder.exception.ExistenteException;
+import group.one.dronefeeder.exception.NotFoundException;
+import group.one.dronefeeder.model.Drone;
+import group.one.dronefeeder.repository.DroneRepository;
 
 /**
  * Class DroneService.
@@ -28,7 +22,7 @@ public class DroneService {
    */
   public Drone create(Drone drone) {
     if (droneJpaRepository.existsByMarca(drone.getMarca())) {
-      throw new DroneExistenteException();
+      throw new ExistenteException("Drone Already Existe");
     }
     return droneJpaRepository.save(drone);
   }
@@ -42,7 +36,8 @@ public class DroneService {
   }
 
   public void delete(Long id) {
-    Drone drone = droneJpaRepository.findById(id).orElseThrow(() -> new NotFoundException("Não encontrado id"));
+    Drone drone = droneJpaRepository.findById(id)
+        .orElseThrow(() -> new NotFoundException("Não encontrado id"));
     droneJpaRepository.deleteById(drone.getId());
   }
 

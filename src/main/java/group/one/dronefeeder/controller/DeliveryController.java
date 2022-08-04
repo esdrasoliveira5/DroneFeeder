@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import group.one.dronefeeder.dto.DeliveryCreateDto;
+import group.one.dronefeeder.dto.DeliveryUpdateDto;
 import group.one.dronefeeder.model.Delivery;
 import group.one.dronefeeder.service.DeliveryService;
 
@@ -17,6 +20,7 @@ import group.one.dronefeeder.service.DeliveryService;
  * Delivery Controller.
  */
 @RestController
+@RequestMapping("/dronefeeder")
 public class DeliveryController {
 
   @Autowired
@@ -33,12 +37,12 @@ public class DeliveryController {
   }
 
   @PostMapping("/delivery")
-  public Delivery create(@RequestBody Delivery delivery) {
+  public Delivery create(@RequestBody DeliveryCreateDto delivery) {
     return service.create(delivery);
   }
 
   @PutMapping("/delivery/{id}")
-  public Delivery update(@PathVariable Long id, Delivery delivery) {
+  public Delivery update(@PathVariable Long id, DeliveryUpdateDto delivery) {
     return service.update(id, delivery);
   }
 
