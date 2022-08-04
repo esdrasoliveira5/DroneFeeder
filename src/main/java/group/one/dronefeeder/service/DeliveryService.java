@@ -79,7 +79,7 @@ public class DeliveryService {
     Delivery delivery =
         repository.findById(id).orElseThrow(() -> new NotFoundException("Delivery Not Found!"));
 
-    repository.deleteById(delivery.getId());
+    repository.delete(delivery);
   }
 
 }
