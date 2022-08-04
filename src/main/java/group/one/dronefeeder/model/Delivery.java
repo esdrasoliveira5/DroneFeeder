@@ -3,14 +3,16 @@ package group.one.dronefeeder.model;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "tb_delivery")
 public class Delivery {
 
   @Id
@@ -32,18 +34,31 @@ public class Delivery {
   @Column
   private Date deliveryDateAndTime;
 
-
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne
   @JoinColumn(name = "drone_id")
   private Drone drone;
 
-  public Delivery() {}
+  @JoinColumn(name = "video_id")
+  @OneToOne
+  private Video video;
 
-  public Delivery(String latitude, String longitude, Drone drone) {
+  public Delivery(String latitude, String longitude) {
     this.latitude = latitude;
     this.longitude = longitude;
-    this.dateAndTime = new Date();
+  }
+
+  public Delivery(String latitude, String longitude, Drone drone, Video video) {
+    this.latitude = latitude;
+    this.longitude = longitude;
     this.drone = drone;
+    this.video = video;
+    this.dateAndTime = new Date();
+    this.deliveryStatus = false;
+    this.deliveryDateAndTime = null;
+  }
+
+  public Delivery() {
+    this.dateAndTime = new Date();
     this.deliveryStatus = false;
     this.deliveryDateAndTime = null;
   }
@@ -57,7 +72,7 @@ public class Delivery {
   }
 
   public String getLatitude() {
-    return latitude;
+    return this.latitude;
   }
 
   public void setLatitude(String latitude) {
@@ -86,6 +101,14 @@ public class Delivery {
 
   public void setDrone(Drone drone) {
     this.drone = drone;
+  }
+
+  public Video getVideo() {
+    return video;
+  }
+
+  public void setVideo(Video video) {
+    this.video = video;
   }
 
   public boolean getDeliveryStatus() {

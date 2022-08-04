@@ -37,8 +37,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-actuator:2.7.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.7.2" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.7.2" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.7.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.7.2" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.2.11" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.2.11" level="project" />
@@ -93,8 +91,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.3.22" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.h2database:h2:2.1.210" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-starter-test:2.6.3" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test:2.7.2" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test-autoconfigure:2.7.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-test:2.7.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.jayway.jsonpath:json-path:2.7.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.minidev:json-smart:2.4.8" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.minidev:accessors-smart:2.4.8" level="project" />
@@ -119,7 +116,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:5.3.22" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.22" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.3.22" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.9.0" level="project" />
     <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-all:1.7.1" level="project" />
     <orderEntry type="library" name="Maven: io.vavr:vavr:0.10.2" level="project" />
@@ -144,5 +140,11 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.22" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.9.7" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: mysql:mysql-connector-java:8.0.29" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-test:5.3.22" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-test-autoconfigure:2.7.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.7.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.7.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.13.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:2.2" level="project" />
   </component>
 </module>

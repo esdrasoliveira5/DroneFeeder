@@ -1,33 +1,45 @@
 package group.one.dronefeeder.model;
 
 import java.util.List;
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "drone")
+@Table(name = "tb_drone")
 public class Drone {
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "id_drone")
-  private Integer id;
-  @Column
+  private Long id;
+  @Column(nullable = false)
   private String marca;
-  @Column
+  @Column(nullable = false)
   private String modelo;
 
-  public Drone() {
-  }
+  @OneToMany(mappedBy = "drone", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<Delivery> deliveries;
+
+  @OneToMany(mappedBy = "drone", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<Video> videos;
+
+  public Drone() {}
 
   public Drone(String marca, String modelo) {
     this.marca = marca;
     this.modelo = modelo;
   }
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
