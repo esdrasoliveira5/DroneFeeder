@@ -10,8 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "tb_video")
 public class Video {
 
   @Id
@@ -31,12 +33,10 @@ public class Video {
 
   public Video() {}
 
-  public Video(String url, Drone drone, Delivery delivery) {
+  public Video(String url, Drone drone) {
     this.url = url;
     this.drone = drone;
-    this.delivery = delivery;
   }
-
 
   public Long getId() {
     return id;
@@ -62,11 +62,4 @@ public class Video {
     this.drone = drone;
   }
 
-  public Delivery getDelivery() {
-    return delivery;
-  }
-
-  public void setDelivery(Delivery delivery) {
-    this.delivery = delivery;
-  }
 }

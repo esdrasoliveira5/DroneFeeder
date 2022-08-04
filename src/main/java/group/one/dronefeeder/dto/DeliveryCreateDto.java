@@ -5,12 +5,15 @@ public class DeliveryCreateDto {
 
   private String longitude;
 
-  private long drone;
+  private Long drone;
 
-  public DeliveryCreateDto(String latitude, String longitude, Long drone) {
+  private Long video;
+
+  public DeliveryCreateDto(String latitude, String longitude, Long drone, Long video) {
     this.setLatitude(latitude);
     this.setLongitude(longitude);
     this.setDrone(drone);
+    this.setVideo(video);
   }
 
   public String getLongitude() {
@@ -35,5 +38,13 @@ public class DeliveryCreateDto {
 
   public void setDrone(long drone) {
     this.drone = drone;
+  }
+
+  public Long getVideo() {
+    return video;
+  }
+
+  public void setVideo(Long video) {
+    this.video = video;
   }
 }

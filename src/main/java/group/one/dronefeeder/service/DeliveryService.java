@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import group.one.dronefeeder.dto.DeliveryCreateDto;
-import group.one.dronefeeder.dto.DeliveryPatchDto;
 import group.one.dronefeeder.dto.DeliveryUpdateDto;
 import group.one.dronefeeder.exception.NotFoundException;
 import group.one.dronefeeder.model.Delivery;
@@ -39,8 +38,11 @@ public class DeliveryService {
 
   public Delivery create(DeliveryCreateDto delivery) {
     Drone drone = droneJpaRepository.findById(delivery.getDrone())
-        .orElseThrow(() -> new NotFoundException("Não encontrado id"));
-    Delivery newDelivery = new Delivery(delivery.getLatitude(), delivery.getLongitude(), drone);
+        .orElseThrow(() -> new NotFoundException("Drone Not Found!!"));
+    Video video = videoRepository.findById(delivery.getVideo())
+        .orElseThrow(() -> new NotFoundException("Video Not Found!!"));
+    Delivery newDelivery =
+        new Delivery(delivery.getLatitude(), delivery.getLongitude(), drone, video);
     return repository.save(newDelivery);
   }
 
@@ -56,16 +58,13 @@ public class DeliveryService {
   }
 
 
-  public Delivery patch(Long id, DeliveryPatchDto data) {
+  public Delivery patch(Long id) {
     Delivery delivery =
         repository.findById(id).orElseThrow(() -> new NotFoundException("Delivery Not Found!"));
     Date date = new Date();
-    Video video = videoRepository.findById(data.getVideo())
-        .orElseThrow(() -> new NotFoundException("Delivery Not Found!"));
 
     delivery.setDeliveryStatus(true);
     delivery.setDeliveryDateAndTime(date);
-    delivery.setVideo(video);
     return repository.save(delivery);
   }
 

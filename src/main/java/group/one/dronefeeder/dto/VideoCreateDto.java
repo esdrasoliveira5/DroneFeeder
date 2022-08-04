@@ -6,12 +6,9 @@ public class VideoCreateDto {
 
   private Long drone;
 
-  private Long delivery;
-
-  public VideoCreateDto(String url, Long drone, Long delivery) {
+  public VideoCreateDto(String url, Long drone) {
     this.setUrl(url);
     this.setDrone(drone);
-    this.setDelivery(delivery);
   }
 
   public String getUrl() {
@@ -28,13 +25,5 @@ public class VideoCreateDto {
 
   public void setDrone(Long drone) {
     this.drone = drone;
-  }
-
-  public Long getDelivery() {
-    return delivery;
-  }
-
-  public void setDelivery(Long delivery) {
-    this.delivery = delivery;
   }
 }

@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import group.one.dronefeeder.dto.VideoCreateDto;
 import group.one.dronefeeder.exception.NotFoundException;
-import group.one.dronefeeder.model.Delivery;
 import group.one.dronefeeder.model.Drone;
 import group.one.dronefeeder.model.Video;
 import group.one.dronefeeder.repository.DeliveryRepository;
@@ -29,16 +28,14 @@ public class VideoService {
   }
 
   public Video findOne(Long id) {
-    return repository.findById(id).orElseThrow(() -> new NotFoundException("Delivery Not Found!"));
+    return repository.findById(id).orElseThrow(() -> new NotFoundException("Video Not Found!"));
   }
 
   public Video create(VideoCreateDto video) {
     Drone drone = droneRepository.findById(video.getDrone())
-        .orElseThrow(() -> new NotFoundException("Video Not Found!!"));
-    Delivery delivery = deliveryRepository.findById(video.getDelivery())
-        .orElseThrow(() -> new NotFoundException("Delivery Not Found!"));
+        .orElseThrow(() -> new NotFoundException("Drone Not Found!!"));
 
-    Video newVideo = new Video(video.getUrl(), drone, delivery);
+    Video newVideo = new Video(video.getUrl(), drone);
     return repository.save(newVideo);
   }
 }
