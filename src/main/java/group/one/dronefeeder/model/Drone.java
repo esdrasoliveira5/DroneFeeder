@@ -1,5 +1,6 @@
 package group.one.dronefeeder.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
@@ -8,12 +9,13 @@ import javax.persistence.*;
 public class Drone {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "id_drone")
-  private Integer id;
-  @Column
+  private Long id;
+  @Column(nullable = false)
   private String marca;
-  @Column
+  @Column(nullable = false)
   private String modelo;
+  @OneToMany(mappedBy = "drone")
+  private List<Delivery> deliveries;
 
   public Drone() {
   }
@@ -23,11 +25,11 @@ public class Drone {
     this.modelo = modelo;
   }
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

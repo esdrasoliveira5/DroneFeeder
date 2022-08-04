@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DroneRepository extends JpaRepository<Drone, Integer> {
+public interface DroneRepository extends JpaRepository<Drone, Long> {
   boolean existsByMarca(String marca);
 }
