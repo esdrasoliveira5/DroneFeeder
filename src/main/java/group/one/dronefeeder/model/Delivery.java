@@ -30,10 +30,10 @@ public class Delivery {
   private Date dateAndTime;
 
   @Column
-  private boolean deliveryStatus = false;
+  private boolean deliveryStatus;
 
   @Column
-  private Date deliveryDateAndTime = null;
+  private Date deliveryDateAndTime;
 
   @ManyToOne
   @JoinColumn(name = "drone_id")
@@ -43,13 +43,25 @@ public class Delivery {
   @JoinColumn(name = "video_id")
   private Video video;
 
-  public Delivery() {}
+
+  public Delivery(String latitude, String longitude) {
+    this.latitude = latitude;
+    this.longitude = longitude;
+  }
 
   public Delivery(String latitude, String longitude, Drone drone) {
     this.latitude = latitude;
     this.longitude = longitude;
     this.drone = drone;
     this.dateAndTime = new Date();
+    this.deliveryStatus = false;
+    this.deliveryDateAndTime = null;
+  }
+
+  public Delivery() {
+    this.dateAndTime = new Date();
+    this.deliveryStatus = false;
+    this.deliveryDateAndTime = null;
   }
 
   public Long getId() {
@@ -106,6 +118,14 @@ public class Delivery {
 
   public void setDeliveryDateAndTime(Date deliveryDateAndTime) {
     this.deliveryDateAndTime = deliveryDateAndTime;
+  }
+
+  public Video getVideo() {
+    return video;
+  }
+
+  public void setVideo(Video video) {
+    this.video = video;
   }
 
 }

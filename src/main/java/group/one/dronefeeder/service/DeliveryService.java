@@ -4,9 +4,16 @@ import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import group.one.dronefeeder.dto.DeliveryCreateDto;
+import group.one.dronefeeder.dto.DeliveryPatchDto;
+import group.one.dronefeeder.dto.DeliveryUpdateDto;
 import group.one.dronefeeder.exception.NotFoundException;
 import group.one.dronefeeder.model.Delivery;
+import group.one.dronefeeder.model.Drone;
+import group.one.dronefeeder.model.Video;
 import group.one.dronefeeder.repository.DeliveryRepository;
+import group.one.dronefeeder.repository.DroneRepository;
+import group.one.dronefeeder.repository.VideoRepository;
 
 /**
  * Delivery Service.
@@ -16,6 +23,12 @@ public class DeliveryService {
   @Autowired
   DeliveryRepository repository;
 
+  @Autowired
+  DroneRepository droneJpaRepository;
+
+  @Autowired
+  VideoRepository videoRepository;
+
   public List<Delivery> findAll() {
     return repository.findAll();
   }
@@ -24,33 +37,36 @@ public class DeliveryService {
     return repository.findById(id).orElseThrow(() -> new NotFoundException("Delivery Not Found!"));
   }
 
-  public Delivery create(Delivery delivery) {
-    // if (repository.existsByDateAndTime(delivery.getDrone(), delivery.getDateAndTime())) {
-    // throw new ExistenteException("Delivery ALready Exist!");
-    // }
+  public Delivery create(DeliveryCreateDto delivery) {
+    Drone drone = droneJpaRepository.findById(delivery.getDrone())
+        .orElseThrow(() -> new NotFoundException("Não encontrado id"));
+    Delivery newDelivery = new Delivery(delivery.getLatitude(), delivery.getLongitude(), drone);
+    return repository.save(newDelivery);
+  }
+
+
+  public Delivery update(Long id, DeliveryUpdateDto data) {
+
+    Delivery delivery =
+        repository.findById(id).orElseThrow(() -> new NotFoundException("Delivery Not Found!"));
+    delivery.setLatitude(data.getLatitude());
+    delivery.setLongitude(data.getLongitude());
 
     return repository.save(delivery);
   }
 
 
-  public Delivery update(Long id, Delivery delivery) {
-    Delivery oldDelivery =
-        repository.findById(id).orElseThrow(() -> new NotFoundException("Delivery Not Found!"));
-    oldDelivery.setDrone(delivery.getDrone());
-    oldDelivery.setLatitude(delivery.getLatitude());
-    oldDelivery.setLongitude(delivery.getLongitude());
-    repository.save(delivery);
-    return delivery;
-  }
-
-  public Delivery patch(Long id) {
+  public Delivery patch(Long id, DeliveryPatchDto data) {
     Delivery delivery =
         repository.findById(id).orElseThrow(() -> new NotFoundException("Delivery Not Found!"));
     Date date = new Date();
+    Video video = videoRepository.findById(data.getVideo())
+        .orElseThrow(() -> new NotFoundException("Delivery Not Found!"));
+
     delivery.setDeliveryStatus(true);
     delivery.setDeliveryDateAndTime(date);
-    repository.save(delivery);
-    return delivery;
+    delivery.setVideo(video);
+    return repository.save(delivery);
   }
 
   public void delete(Long id) {
