@@ -11,6 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * Delivery.
+ */
 @Entity
 @Table(name = "tb_delivery")
 public class Delivery {
@@ -47,6 +50,9 @@ public class Delivery {
     this.longitude = longitude;
   }
 
+  /**
+   * Delivery.
+   */
   public Delivery(String latitude, String longitude, Drone drone, Video video) {
     this.latitude = latitude;
     this.longitude = longitude;
@@ -57,6 +63,9 @@ public class Delivery {
     this.deliveryDateAndTime = null;
   }
 
+  /**
+   * Delivery.
+   */
   public Delivery() {
     this.dateAndTime = new Date();
     this.deliveryStatus = false;

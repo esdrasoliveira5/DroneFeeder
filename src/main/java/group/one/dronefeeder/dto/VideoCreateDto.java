@@ -1,5 +1,8 @@
 package group.one.dronefeeder.dto;
 
+/**
+ * VideoCreateDto.
+ */
 public class VideoCreateDto {
 
   private String url;

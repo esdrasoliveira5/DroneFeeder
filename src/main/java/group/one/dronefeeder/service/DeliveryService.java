@@ -1,9 +1,5 @@
 package group.one.dronefeeder.service;
 
-import java.util.Date;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import group.one.dronefeeder.dto.DeliveryCreateDto;
 import group.one.dronefeeder.dto.DeliveryUpdateDto;
 import group.one.dronefeeder.exception.ExistenteException;
@@ -14,6 +10,10 @@ import group.one.dronefeeder.model.Video;
 import group.one.dronefeeder.repository.DeliveryRepository;
 import group.one.dronefeeder.repository.DroneRepository;
 import group.one.dronefeeder.repository.VideoRepository;
+import java.util.Date;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Delivery Service.
@@ -37,6 +37,9 @@ public class DeliveryService {
     return repository.findById(id).orElseThrow(() -> new NotFoundException("Delivery Not Found!"));
   }
 
+  /**
+   * create.
+   */
   public Delivery create(DeliveryCreateDto delivery) {
     Drone drone = droneJpaRepository.findById(delivery.getDrone())
         .orElseThrow(() -> new NotFoundException("Drone Not Found!!"));
@@ -52,7 +55,9 @@ public class DeliveryService {
     return repository.save(newDelivery);
   }
 
-
+  /**
+   * update.
+   */
   public Delivery update(Long id, DeliveryUpdateDto data) {
 
     Delivery delivery =
@@ -63,7 +68,9 @@ public class DeliveryService {
     return repository.save(delivery);
   }
 
-
+  /**
+   * patch.
+   */
   public Delivery patch(Long id) {
     Delivery delivery =
         repository.findById(id).orElseThrow(() -> new NotFoundException("Delivery Not Found!"));
@@ -74,6 +81,9 @@ public class DeliveryService {
     return repository.save(delivery);
   }
 
+  /**
+   * delete.
+   */
   public void delete(Long id) {
 
     Delivery delivery =

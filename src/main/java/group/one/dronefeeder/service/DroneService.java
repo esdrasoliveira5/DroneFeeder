@@ -1,13 +1,13 @@
 package group.one.dronefeeder.service;
 
-import java.util.List;
-import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import group.one.dronefeeder.exception.ExistenteException;
 import group.one.dronefeeder.exception.NotFoundException;
 import group.one.dronefeeder.model.Drone;
 import group.one.dronefeeder.repository.DroneRepository;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Class DroneService.
@@ -35,12 +35,18 @@ public class DroneService {
     return droneJpaRepository.findById(id);
   }
 
+  /**
+   * delete.
+   */
   public void delete(Long id) {
     Drone drone = droneJpaRepository.findById(id)
         .orElseThrow(() -> new NotFoundException("Não encontrado id"));
     droneJpaRepository.deleteById(drone.getId());
   }
 
+  /**
+   * updateById.
+   */
   public Drone updateById(Long id, Drone drone) {
     Optional<Drone> oldDrone = droneJpaRepository.findById(id);
     if (oldDrone.isPresent()) {

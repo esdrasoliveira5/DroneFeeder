@@ -1,8 +1,5 @@
 package group.one.dronefeeder.service;
 
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import group.one.dronefeeder.dto.VideoCreateDto;
 import group.one.dronefeeder.exception.NotFoundException;
 import group.one.dronefeeder.model.Drone;
@@ -10,7 +7,13 @@ import group.one.dronefeeder.model.Video;
 import group.one.dronefeeder.repository.DeliveryRepository;
 import group.one.dronefeeder.repository.DroneRepository;
 import group.one.dronefeeder.repository.VideoRepository;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+/**
+ * VideoService.
+ */
 @Service
 public class VideoService {
 
@@ -31,6 +34,9 @@ public class VideoService {
     return repository.findById(id).orElseThrow(() -> new NotFoundException("Video Not Found!"));
   }
 
+  /**
+   * create.
+   */
   public Video create(VideoCreateDto video) {
     Drone drone = droneRepository.findById(video.getDrone())
         .orElseThrow(() -> new NotFoundException("Drone Not Found!!"));

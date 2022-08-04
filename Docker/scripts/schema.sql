@@ -1,8 +1,0 @@
-USE MY_DBASE;
-
-CREATE TABLE drone (
-  id_drone INTEGER AUTO_INCREMENT,
-  marca VARCHAR(50) NOT NULL,
-  modelo VARCHAR(50) NOT NULL,
-  PRIMARY KEY(id_drone)
-);

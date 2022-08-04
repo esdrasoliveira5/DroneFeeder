@@ -1,5 +1,8 @@
 package group.one.dronefeeder.dto;
 
+/**
+ * DeliveryCreateDto.
+ */
 public class DeliveryCreateDto {
   private String latitude;
 
@@ -9,6 +12,9 @@ public class DeliveryCreateDto {
 
   private Long video;
 
+  /**
+   * DeliveryCreateDto.
+   */
   public DeliveryCreateDto(String latitude, String longitude, Long drone, Long video) {
     this.setLatitude(latitude);
     this.setLongitude(longitude);

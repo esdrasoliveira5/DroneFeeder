@@ -1,5 +1,8 @@
 package group.one.dronefeeder.exception;
 
+/**
+ * DataError.
+ */
 public class DataError {
   private String error;
 
