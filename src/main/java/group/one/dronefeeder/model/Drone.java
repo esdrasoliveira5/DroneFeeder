@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * Drone.
+ */
 @Entity
 @Table(name = "tb_drone")
 public class Drone {
