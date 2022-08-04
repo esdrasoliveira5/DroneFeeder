@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import group.one.dronefeeder.dto.DeliveryCreateDto;
 import group.one.dronefeeder.dto.DeliveryUpdateDto;
+import group.one.dronefeeder.exception.ExistenteException;
 import group.one.dronefeeder.exception.NotFoundException;
 import group.one.dronefeeder.model.Delivery;
 import group.one.dronefeeder.model.Drone;
@@ -41,6 +42,11 @@ public class DeliveryService {
         .orElseThrow(() -> new NotFoundException("Drone Not Found!!"));
     Video video = videoRepository.findById(delivery.getVideo())
         .orElseThrow(() -> new NotFoundException("Video Not Found!!"));
+
+    if (repository.existsByVideo(video)) {
+      throw new ExistenteException("Video Already Associate a one Delivery!!");
+    }
+
     Delivery newDelivery =
         new Delivery(delivery.getLatitude(), delivery.getLongitude(), drone, video);
     return repository.save(newDelivery);
