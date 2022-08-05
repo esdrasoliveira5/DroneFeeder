@@ -1,5 +1,8 @@
 package group.one.dronefeeder.dto;
 
+/**
+ * DeliveryUpdateDto.
+ */
 public class DeliveryUpdateDto {
 
   private String latitude;
