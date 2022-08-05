@@ -61,6 +61,16 @@ O drone ainda vai informar se a entrega foi efetuada junto a data, horário e v�
 - Instale as dependencias
   ```sh
     mvn install 
+    
+- Configure secrets.properties conforme o exemplo:
+  ```sh
+  
+    MYSQL_ROOT_HOST=dbapp
+    MYSQL_ROOT_USER=root
+    MYSQL_ROOT_PASSWORD=secretroot
+    MYSQL_DATABASE=MY_DBASE
+
+    APP_PORT=8082 
 
 
 ## Instruções para iniciar o projeto
